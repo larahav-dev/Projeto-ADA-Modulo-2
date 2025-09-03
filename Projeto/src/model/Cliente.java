@@ -1,7 +1,5 @@
         package model;
-        
-
-                
+        import src.sevices.ValidarCliente;
 
 import java.util.UUID;
 
@@ -12,7 +10,7 @@ public class Cliente {
                 private String documento;
                                 
                 public Cliente(String nome, String email, String documento) {
-
+                 ValidarCliente.validarCriacao(nome, documento, email);
 
                         this.id = UUID.randomUUID();
                                 this.nome = nome;
@@ -20,6 +18,7 @@ public class Cliente {
                                                 this.documento = documento;
                         }
     public void atualizarDados(String nome, String email) {
+                ValidarCliente.validarAtualizacao(nome, email);
         this.nome = nome;
         this.email = email;
     }   
