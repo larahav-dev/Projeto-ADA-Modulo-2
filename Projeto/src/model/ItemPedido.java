@@ -34,7 +34,7 @@ public class ItemPedido {
 
         // Metodo para calcular o subtotal
        private BigDecimal calcularPrecoVenda () {
-            //TODO Verificar
+        
            // Acessa o precoProduto através do metodo getter
            BigDecimal precoProd = produto.getPrecoProduto();
             BigDecimal multiplicador = new BigDecimal(quantidade);
