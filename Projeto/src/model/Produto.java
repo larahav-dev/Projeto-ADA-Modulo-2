@@ -9,12 +9,11 @@ public class Produto {
     private BigDecimal precoProduto;
 
     public Produto(String nomeProduto, String descricaoProduto, BigDecimal precoProduto) {
-
         this.nomeProduto = nomeProduto;
         this.descricaoProduto = descricaoProduto;
         this.precoProduto = precoProduto;
-
     }
+
     //atualizar os produtos já existentes
     public void atualizarProduto(String nomeProduto, String descricaoProduto, BigDecimal precoProduto) {
         this.nomeProduto = nomeProduto;
