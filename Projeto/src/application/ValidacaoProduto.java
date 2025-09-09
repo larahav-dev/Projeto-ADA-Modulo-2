@@ -1,5 +1,4 @@
-package Sevices;
-import model.Produto;
+package application;
 import java.math.BigDecimal;
 
 public class ValidacaoProduto {
