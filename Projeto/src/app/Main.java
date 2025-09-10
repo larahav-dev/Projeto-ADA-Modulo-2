@@ -6,6 +6,8 @@ import application.ProdutoService;
 import domain.Cliente;
 import domain.Produto;
 import domain.pricing.DefaultPricingPolicy;
+import domain.validation.ClienteValidator;
+import domain.validation.ProdutoValidator;
 import infra.EmailNotifier;
 import infra.memory.InMemoryClienteRepository;
 import infra.memory.InMemoryPedidoRepository;
@@ -25,13 +27,17 @@ public class Main {
         PedidoRepository pedidoRepo  = new InMemoryPedidoRepository();
         Notifier notifier = new EmailNotifier();
 
+        // Validadores
+        ClienteValidator clienteValidator = new ClienteValidator(clienteRepo);
+        ProdutoValidator produtoValidator = new ProdutoValidator();
+
         // Application services (casos de uso)
-        ClienteService clienteService = new ClienteService(clienteRepo);
-        ProdutoService produtoService = new ProdutoService(produtoRepo);
+        ClienteService clienteService = new ClienteService(clienteRepo, clienteValidator);
+        ProdutoService produtoService = new ProdutoService(produtoRepo, produtoValidator);
         PedidoService pedidoService   = new PedidoService(pedidoRepo, notifier, new DefaultPricingPolicy());
 
-        // Fluxo
-        Cliente c = clienteService.cadastrar("Larah", "larah@email.com", "12345678900");
+        // Fluxo de exemplo
+        Cliente c = clienteService.cadastrar("Larah", "larah@email.com", "37637105822");
         Produto p = produtoService.cadastrar("Livro Java", "Iniciantes", new BigDecimal("100.00"));
 
         String pedidoId = pedidoService.criarPedido(c);
@@ -41,6 +47,6 @@ public class Main {
         pedidoService.realizarPagamento(pedidoId);
         pedidoService.entregarPedido(pedidoId);
 
-        System.out.println("OK");
+        System.out.println("Fluxo concluído com sucesso!");
     }
 }
