@@ -24,20 +24,16 @@ public class ProdutoService {
         return produto;
     }
 
-    public Produto atualizar(Integer id, String nome, String descricao, BigDecimal preco) {
+    public Produto atualizar(Integer id, String novoNomeProd, String novaDescricaoProd, BigDecimal novoPreco) {
         Produto produto = buscarOuFalhar(id);
-        produtoValidator.validarAtualizacao(nome, descricao, preco);
-        produto.atualizar(nome, descricao, preco);
+        produtoValidator.validarAtualizacao(novoNomeProd, novaDescricaoProd, novoPreco);
+        produto.atualizar(novoNomeProd, novaDescricaoProd, novoPreco);
         produtoRepository.save(produto);
         return produto;
     }
 
     public Produto buscar(Integer id) {
         return buscarOuFalhar(id);
-    }
-
-    public List<Produto> listar() {
-        return produtoRepository.findAll();
     }
 
     // Método utilitário para evitar repetição de código

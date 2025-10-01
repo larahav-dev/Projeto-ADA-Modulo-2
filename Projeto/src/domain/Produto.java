@@ -52,4 +52,14 @@ public class Produto {
     public BigDecimal getPreco() {
         return preco;
     }
+
+    @Override
+    public String toString() {
+        return "Produto cadastrado com sucesso! \n"  +
+                "ID:"+ id + "\n"+
+                ", Nome='" + nome + '\'' +
+                ", Descrição='" + descricao + '\'' +
+                ", Preço= R$:'" + preco + '\'' +
+                '}';
+    }
 }

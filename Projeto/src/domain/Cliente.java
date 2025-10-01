@@ -29,4 +29,13 @@ public class Cliente {
     public String getNome() { return nome; }
     public String getEmail() { return email; }
     public String getDocumento() { return documento; }
+
+    @Override
+    public String toString() {
+        return "Cliente cadastrado com sucesso! \n"  +
+                "ID: " + id + "\n" +
+                " Nome=" + nome  +
+                ", Email='" + email +
+                ", Documento (CPF)=" + documento ;
+    }
 }
